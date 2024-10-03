@@ -33,7 +33,7 @@ export function LampDemo() {
         <div
           className={cn(
             "relative flex min-h-[0.40vh]  flex-col justify-end overflow-hidden w-full z-1000",
-            "bg-[#030303]",
+            "bg-[#060606]",
             className
           )}
         >
@@ -68,7 +68,7 @@ export function LampDemo() {
                 duration: 0.8,
                 ease: "easeInOut",
               }}
-              className="absolute inset-auto z-1000 h-0.5 w-full -translate-y-[1px] bg-lime-400 "
+              className="absolute inset-auto z-1000 h-0.5 w-full -translate-y-[1px] bg-[#C10C30] "
             ></motion.div>
           </div>
         </div>

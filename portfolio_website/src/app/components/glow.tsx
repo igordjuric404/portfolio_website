@@ -32,12 +32,12 @@ export const LampGlow = ({
   return (
     <div
       className={cn(
-        "relative flex min-h-screen flex-col items-start  overflow-hidden w-full rounded-md z-0",
+        "relative flex min-h-[90px] flex-col items-start  overflow-hidden w-full rounded-md z-1",
         className
       )}
-      style={{ position: "fixed", top: "72px", zIndex: 1000 }}
+      style={{ position: "fixed", top: "72px", zIndex: 1 }}
     >
-      <div className="relative flex w-full flex-1 items-start justify-center isolate z-0 ">
+      <div className="relative flex w-full flex-1 items-start justify-center isolate z-1 ">
 
         <motion.div
           initial={{ width: "0rem" }}
@@ -47,12 +47,12 @@ export const LampGlow = ({
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="absolute inset-auto z-30 h-3 w-[100vw] -translate-y-[0.7rem] rounded bg-lime-400 blur-2xl"
+          className="absolute inset-auto z-1 h-3 w-[100vw] -translate-y-[0.7rem] rounded bg-[#D00C30] blur-2xl"
         ></motion.div>
 
       </div>
 
-      <div className="relative z-50 flex -translate-y-80 flex-col items-center px-5">
+      <div className="relative z-1 flex -translate-y-80 flex-col items-center px-5">
         {children}
       </div>
     </div>

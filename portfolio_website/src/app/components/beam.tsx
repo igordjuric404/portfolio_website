@@ -42,18 +42,18 @@ export const TracingBeam = ({
   }, []);
 
   const y1 = useSpring(
-    useTransform(scrollYProgress, [0, 0.5], [0, svgHeight]),
+    useTransform(scrollYProgress, [0, 1], [0, svgHeight+1990]),
     {
-      stiffness: 500,
-      damping: 90,
+      stiffness: 400,
+      damping: 120,
     }
   );
 
   const y2 = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, svgHeight - 200]),
+    useTransform(scrollYProgress, [0, 1], [0, svgHeight]),
     {
-      stiffness: 500,
-      damping: 90,
+      stiffness: 400,
+      damping: 120,
     }
   );
 
@@ -62,20 +62,18 @@ export const TracingBeam = ({
       ref={ref}
       className={cn("relative ml-[10px] w-[40px] h-full", className)}
     >
-
       <svg
         viewBox={`0 0 40 ${svgHeight}`}
         width="40"
-        height={svgHeight} 
+        height={svgHeight}
         className="hidden lg:block md:block sm:block xs:block absolute left-0 top-0"
         aria-hidden="true"
-        
       >
         {/* First Line */}
         <motion.path
           d={`M 1 0 L 1 ${
             svgHeight * 0.8
-          } l 18 24 L 19 ${svgHeight} L 19 ${svgHeight}`} 
+          } l 18 24 L 19 ${svgHeight} L 19 ${svgHeight}`}
           fill="none"
           stroke="#9091A0"
           strokeOpacity="0.16"
@@ -87,10 +85,10 @@ export const TracingBeam = ({
         <motion.path
           d={`M 1 0 L 1 ${
             svgHeight * 0.8
-          } l 18 24 L 19 ${svgHeight} L 19 ${svgHeight}`} 
+          } l 18 24 L 19 ${svgHeight} L 19 ${svgHeight}`}
           fill="none"
           stroke="url(#gradient)"
-          strokeWidth="1.25"
+          strokeWidth="1.55"
           className="motion-reduce:hidden"
           transition={{
             duration: 10,
@@ -100,7 +98,7 @@ export const TracingBeam = ({
         <motion.path
           d={`M 6 -2 L 6 ${
             svgHeight * 0.8 - 2
-          } l 18 24 L 24 ${svgHeight} L 24 ${svgHeight}`} 
+          } l 18 24 L 24 ${svgHeight} L 24 ${svgHeight}`}
           fill="none"
           stroke="#9091A0"
           strokeOpacity="0.16"
@@ -112,10 +110,10 @@ export const TracingBeam = ({
         <motion.path
           d={`M 6 -2 L 6 ${
             svgHeight * 0.8 - 2
-          } l 18 24 L 24 ${svgHeight} L 24 ${svgHeight}`} 
+          } l 18 24 L 24 ${svgHeight} L 24 ${svgHeight}`}
           fill="none"
           stroke="url(#gradient)"
-          strokeWidth="1.25"
+          strokeWidth="1.55"
           className="motion-reduce:hidden"
           transition={{
             duration: 10,
@@ -128,13 +126,13 @@ export const TracingBeam = ({
             gradientUnits="userSpaceOnUse"
             x1="0"
             x2="0"
-            y1={y1} 
-            y2={y2} 
+            y1={y1}
+            y2={y2}
           >
-            <stop stopColor="rgba(163,230,53,0.8)" stopOpacity="0"></stop>
-            <stop stopColor="rgba(163,230,5,0.8)"></stop>
-            <stop offset="0.6" stopColor="rgba(96, 68, 199, 1)"></stop> 
-            <stop offset="1" stopColor="#AE48FF" stopOpacity="0"></stop>
+            <stop stopColor="#ffe800" stopOpacity="0"></stop>
+            <stop stopColor="#ffe800"></stop>
+            <stop offset="0.5" stopColor="#f30000"></stop>
+            <stop offset="1" stopColor="#f30000" stopOpacity="0"></stop>
           </motion.linearGradient>
         </defs>
       </svg>
