@@ -41,7 +41,7 @@ button > span:hover {
   cursor: url("./img/pointer.png"), auto;
 } */
 
-header *{
+.dock *{
   content: "";
   cursor: url("./img/pointer.png") 16 0, auto;
 }
@@ -63,6 +63,7 @@ header *{
 html {
   overflow: scroll;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
   width: 0; /* Remove scrollbar space */
