@@ -5,16 +5,13 @@ import { Lamp } from "./components/lamp";
 import { LampGlow } from "./components/glow";
 import { BackgroundGradientAnimation } from "./components/background-gradient-animation";
 import { FloatingDock } from "./components/floating-dock";
+import CollapsibleTimeline from "./components/collapsible-timeline";
+
 import {
-  IconBrandGithub,
-  IconBrandGmail,
-  IconBrandLinkedin,
-  IconBrandX,
-  IconExchange,
   IconHome,
+  IconBrandGithub,
+  IconBrandLinkedin,
   IconMail,
-  IconNewSection,
-  IconTerminal2,
 } from "@tabler/icons-react";
 
 const AgePage = () => {
@@ -66,20 +63,24 @@ const AgePage = () => {
       >
         <BackgroundGradientAnimation>
           <div className="absolute z-50 inset-0 flex flex-col items-left justify-center text-white font-bold px-4 pointer-events-none">
-            <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20 h-[170px] text-3xl text-left md:text-4xl lg:text-9xl ml-[50px] ">
+            <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20 h-[200px] text-3xl text-left md:text-4xl lg:text-9xl ml-[50px] ">
               Igor Đurić
             </p>
             <a>
-              <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20 h-[100px] text-3xl text-left md:text-4xl lg:text-2xl ml-[57px]">
+              <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20 h-[100px] text-3xl text-left md:text-4xl lg:text-2xl ml-[57px] mt-[10px]">
                 Frontend developer
               </p>
             </a>
           </div>
         </BackgroundGradientAnimation>
         <div className="relative top-[-300px] bg-gradient-to-b from-transparent z-100 to-[#060606] h-[300px] w-[100vw] pointer-events-none" />
-        <div className="relative top-[-550px] bg-gradient-to-b from-transparent z-100 to-[#060606] h-[300px] w-[100vw] pointer-events-none" />
-        <div className="w-[100vw] h-[100vh] mt-[-550px] bg-[#060606]"/>
-        <div className="w-[100vw] h-[100vh] mt-[-300px] bg-[#060606]"></div>
+        {/* <div className="relative top-[-550px] bg-gradient-to-b from-transparent z-100 to-[#060606] h-[300px] w-[100vw] pointer-events-none" /> */}
+        <div className="w-[100vw] h-[100vh] pt-[10px] mt-[-300px] bg-[#060606]">
+          <CollapsibleTimeline>
+          </CollapsibleTimeline>
+        </div>
+        <div className="w-[100vw] h-[100vh] mt-[-300px] bg-[#060606]">
+        </div>
 
         <TracingBeam className="absolute sidebar z-100 left-0 top-0">
           <div className="scroll beam w-[5vw] h-[200vh]"></div>
