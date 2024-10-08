@@ -5,6 +5,7 @@ const repo = 'portfolio_website';
 const nextConfig = {
   output: 'export',
   basePath: isGithubPages ? `/${repo}` : '',
+  assetPrefix: isGithubPages ? `/${repo}/` : '',
   trailingSlash: true,
   images: {
     unoptimized: true,  // Disable Image Optimization for static export
