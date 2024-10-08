@@ -172,15 +172,17 @@ const CollapsibleTimeline: React.FC = () => {
               </span>
             </div>
             <div
-              className={`timeline__item-body ${expandedItems[item.id] ? 'timeline__item-body--expanded' : ''}`}
-              id={`item${item.id}-ctrld`}
-              role="region"
-              aria-labelledby={`item${item.id}`}
-              aria-hidden={!expandedItems[item.id]}
-              ref={(el) => (contentRefs.current[item.id] = el)}
-            >
-              <div className="timeline__item-body-content dark:bg-neutral-800">{item.content}</div>
-            </div>
+                className={`timeline__item-body ${expandedItems[item.id] ? 'timeline__item-body--expanded' : ''}`}
+                id={`item${item.id}-ctrld`}
+                role="region"
+                aria-labelledby={`item${item.id}`}
+                aria-hidden={!expandedItems[item.id]}
+                ref={(el) => {
+                  contentRefs.current[item.id] = el;
+                }}
+              >
+                <div className="timeline__item-body-content dark:bg-neutral-800">{item.content}</div>
+              </div>
           </div>
         ))}
       </div>

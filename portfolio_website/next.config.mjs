@@ -6,6 +6,9 @@ const nextConfig = {
   output: 'export',
   basePath: isGithubPages ? `/${repo}` : '',
   trailingSlash: true,
+  images: {
+    unoptimized: true,  // Disable Image Optimization for static export
+  },
 };
 
 export default nextConfig;

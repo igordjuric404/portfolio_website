@@ -3,13 +3,19 @@ import { cn } from "@/utils/cn";
 import { useEffect, useRef, useState } from "react";
 
 export const BackgroundGradientAnimation = ({
-  gradientBackgroundStart = "rgb(6, 6, 6)",
-  gradientBackgroundEnd = "rgb(6, 6, 6)",
+  gradientBackgroundStart = "rgb(0, 0, 0)",
+  gradientBackgroundEnd = "rgb(0, 0, 0)",
   firstColor = "76, 3, 11",
   secondColor = "158, 0, 0",
   thirdColor = "253, 154, 14",
-  fourthColor = "223, 179, 8",
+  fourthColor = "210, 167, 8",
   fifthColor = "209, 137, 6",
+  // firstColor = "210, 167, 8",
+  // secondColor = "158, 0, 0", //druga najveca?
+  // thirdColor = "253, 154, 14", //najveca
+  // fourthColor = "76, 3, 11", //najmanja
+  // fifthColor = "209, 137, 6", //veliki krug
+  // pointerColor = "190, 16, 16",
   pointerColor = "190, 16, 16",
   size = "85%",
   blendingValue = "hard",
@@ -35,41 +41,42 @@ export const BackgroundGradientAnimation = ({
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
 
-  // Use a state variable to check if the window is available
-  const [isClient, setIsClient] = useState(false);
+  const initialCenterX = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
+  const initialCenterY = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
+
+  const [curX, setCurX] = useState(initialCenterX);
+  const [curY, setCurY] = useState(initialCenterY);
+  const [tgX, setTgX] = useState(initialCenterX);
+  const [tgY, setTgY] = useState(initialCenterY);
 
   useEffect(() => {
-    // Set isClient to true when the component mounts (only in the browser)
-    setIsClient(true);
+    // Set the window values after the component has mounted (in the browser)
+    if (typeof window !== "undefined") {
+      setCurX(window.innerWidth / 2);
+      setCurY(window.innerHeight / 2);
+      setTgX(window.innerWidth / 2);
+      setTgY(window.innerHeight / 2);
+    }
   }, []);
 
-  // Conditionally set initial positions only if isClient is true
-  const [curX, setCurX] = useState(isClient ? window.innerWidth / 2 : 0);
-  const [curY, setCurY] = useState(isClient ? window.innerHeight / 2 : 0);
-  const [tgX, setTgX] = useState(isClient ? window.innerWidth / 2 : 0);
-  const [tgY, setTgY] = useState(isClient ? window.innerHeight / 2 : 0);
-
   useEffect(() => {
-    if (isClient) {
-      document.body.style.setProperty(
-        "--gradient-background-start",
-        gradientBackgroundStart
-      );
-      document.body.style.setProperty(
-        "--gradient-background-end",
-        gradientBackgroundEnd
-      );
-      document.body.style.setProperty("--first-color", firstColor);
-      document.body.style.setProperty("--second-color", secondColor);
-      document.body.style.setProperty("--third-color", thirdColor);
-      document.body.style.setProperty("--fourth-color", fourthColor);
-      document.body.style.setProperty("--fifth-color", fifthColor);
-      document.body.style.setProperty("--pointer-color", pointerColor);
-      document.body.style.setProperty("--size", size);
-      document.body.style.setProperty("--blending-value", blendingValue);
-    }
+    document.body.style.setProperty(
+      "--gradient-background-start",
+      gradientBackgroundStart
+    );
+    document.body.style.setProperty(
+      "--gradient-background-end",
+      gradientBackgroundEnd
+    );
+    document.body.style.setProperty("--first-color", firstColor);
+    document.body.style.setProperty("--second-color", secondColor);
+    document.body.style.setProperty("--third-color", thirdColor);
+    document.body.style.setProperty("--fourth-color", fourthColor);
+    document.body.style.setProperty("--fifth-color", fifthColor);
+    document.body.style.setProperty("--pointer-color", pointerColor);
+    document.body.style.setProperty("--size", size);
+    document.body.style.setProperty("--blending-value", blendingValue);
   }, [
-    isClient,
     gradientBackgroundStart,
     gradientBackgroundEnd,
     firstColor,
@@ -79,27 +86,22 @@ export const BackgroundGradientAnimation = ({
     fifthColor,
     pointerColor,
     size,
-    blendingValue
-  ]);
-  
+    blendingValue]);
 
   useEffect(() => {
-    if (!isClient || !interactiveRef.current) {
-      return;
-    }
-
     function move() {
-      setCurX((prevCurX) => prevCurX + (tgX - prevCurX) / 20);
-      setCurY((prevCurY) => prevCurY + (tgY - prevCurY) / 20);
-      if (interactiveRef.current) {
-        interactiveRef.current.style.transform = `translate(${Math.round(
-          curX
-        )}px, ${Math.round(curY)}px)`;
+      if (!interactiveRef.current) {
+        return;
       }
+      setCurX(curX + (tgX - curX) / 20);
+      setCurY(curY + (tgY - curY) / 20);
+      interactiveRef.current.style.transform = `translate(${Math.round(
+        curX
+      )}px, ${Math.round(curY)}px)`;
     }
 
     move();
-  }, [tgX, tgY, curX, curY, isClient]);
+  }, [tgX, tgY]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     setTgX(event.clientX);
@@ -108,11 +110,8 @@ export const BackgroundGradientAnimation = ({
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
-    if (isClient) {
-      setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-    }
-  }, [isClient]);
-
+    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+  }, []);
 
   return (
     <div
