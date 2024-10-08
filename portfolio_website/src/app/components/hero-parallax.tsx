@@ -95,10 +95,10 @@ export const HeroParallax = ({
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-10 md:py-10 px-4 w-full  left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+      <h1 className="text-2xl md:text-5xl font-bold dark:text-white monument-bold">
         My Projects
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+      <p className="max-w-3xl text-base md:text-xl mt-8 dark:text-neutral-200 monument">
       My projects vary from real-world applications for Serbian government organizations to personal development projects and creative solutions built during hackathons
       </p>
     </div>
@@ -136,12 +136,12 @@ export const ProductCard = ({
           src={product.thumbnail}
           height="1079"
           width="1920"
-          className="object-cover object-center absolute h-full w-full inset-0"
+          className="object-cover object-center absolute h-full w-full inset-0 "
           alt={product.title}
         />
       </Link>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white monument">
         {product.title}
       </h2>
     </motion.div>

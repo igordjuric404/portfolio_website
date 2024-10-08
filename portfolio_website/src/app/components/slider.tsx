@@ -1,5 +1,5 @@
-"use client"
-import React from 'react';
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 import {
   IconBrandHtml5,
   IconBrandCss3,
@@ -13,12 +13,40 @@ import {
 } from "@tabler/icons-react";
 
 const Slider = () => {
+  const [inView, setInView] = useState(false);
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setInView(true);
+        }
+      },
+      {         
+        rootMargin: "200px 0px",
+        threshold: 0.5 
+      }
+    );
+
+    if (sliderRef.current) {
+      observer.observe(sliderRef.current);
+    }
+
+    return () => {
+      if (sliderRef.current) {
+        observer.unobserve(sliderRef.current);
+      }
+    };
+  }, []);
+
+  // Only render the slider if it's in view
   return (
     <div className="navbar">
-      <div className="wrapper">
-        <div className="slider">
-          
-          <div className="slide">
+      <div className="wrapper" ref={sliderRef}>
+        {inView && (
+          <div className="slider" >
+            <div className="slide">
             <IconBrandHtml5 className="h-[70px] w-[70px] mx-[24px] text-[#8c3416]" />
             <IconBrandCss3 className="h-[70px] w-[70px] mx-[24px] text-[#192f7a]" />
             <IconBrandBootstrap className="h-[70px] w-[70px] mx-[24px] text-[#3b2853]" />
@@ -79,7 +107,8 @@ const Slider = () => {
             <IconBrandAngular className="h-[70px] w-[70px] mx-[24px] text-neutral-500" />
             <IconBrandCSharp className="h-[70px] w-[70px] mx-[24px] text-neutral-500" />
             <IconBrandLaravel className="h-[70px] w-[70px] mx-[24px] text-neutral-500" /> */}
-        </div>
+          </div>
+        )}
       </div>
 
       <style jsx>{`
@@ -108,7 +137,7 @@ const Slider = () => {
           animation: slideshow 25s linear infinite;
         }
 
-        .slide *{
+        .slide * {
           padding: 0 30px;
         }
 

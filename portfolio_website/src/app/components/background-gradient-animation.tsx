@@ -3,19 +3,19 @@ import { cn } from "@/utils/cn";
 import { useEffect, useRef, useState } from "react";
 
 export const BackgroundGradientAnimation = ({
-  gradientBackgroundStart = "rgb(6, 6, 6)",
-  gradientBackgroundEnd = "rgb(6, 6, 6)",
-  // firstColor = "106, 4, 15",
-  // secondColor = "208, 0, 0",
-  // thirdColor = "232, 93, 4",
-  // fourthColor = "250, 163, 7",
-  // fifthColor = "255, 205, 8",
-  // pointerColor = "148, 12, 48",
+  gradientBackgroundStart = "rgb(0, 0, 0)",
+  gradientBackgroundEnd = "rgb(0, 0, 0)",
   firstColor = "76, 3, 11",
   secondColor = "158, 0, 0",
   thirdColor = "253, 154, 14",
-  fourthColor = "223, 179, 8",
+  fourthColor = "210, 167, 8",
   fifthColor = "209, 137, 6",
+  // firstColor = "210, 167, 8",
+  // secondColor = "158, 0, 0", //druga najveca?
+  // thirdColor = "253, 154, 14", //najveca
+  // fourthColor = "76, 3, 11", //najmanja
+  // fifthColor = "209, 137, 6", //veliki krug
+  // pointerColor = "190, 16, 16",
   pointerColor = "190, 16, 16",
   size = "85%",
   blendingValue = "hard",
@@ -45,6 +45,17 @@ export const BackgroundGradientAnimation = ({
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
+
+  useEffect(() => {
+    // Set the window values after the component has mounted (in the browser)
+    if (typeof window !== "undefined") {
+      setCurX(window.innerWidth / 2);
+      setCurY(window.innerHeight / 2);
+      setTgX(window.innerWidth / 2);
+      setTgY(window.innerHeight / 2);
+    }
+  }, []);
+
   useEffect(() => {
     document.body.style.setProperty(
       "--gradient-background-start",
@@ -80,11 +91,8 @@ export const BackgroundGradientAnimation = ({
   }, [tgX, tgY]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (interactiveRef.current) {
-      const rect = interactiveRef.current.getBoundingClientRect();
-      setTgX(event.clientX);
-      setTgY(event.clientY);
-    }
+    setTgX(event.clientX);
+    setTgY(event.clientY);
   };
 
   const [isSafari, setIsSafari] = useState(false);
@@ -95,7 +103,7 @@ export const BackgroundGradientAnimation = ({
   return (
     <div
       className={cn(
-        "h-screen w-screen  relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        "h-screen w-screen  relative overflow-hidden top-0 left-0 bg-[#060606]",
         containerClassName
       )}
     >

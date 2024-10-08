@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useRef } from "react";
 import { TracingBeam } from "./components/beam";
 import Header from "./components/header";
 import { Lamp } from "./components/lamp";
@@ -18,6 +19,8 @@ import {
 import ImageSlider from "./components/images-slider";
 
 const AgePage = () => {
+  const mainContentRef = useRef<HTMLDivElement>(null);
+
   const links = [
     {
       title: "Home",
@@ -63,31 +66,29 @@ const AgePage = () => {
         "/img/rnids.png",
     },
     {
-      title: "Plagiarsm detector",
-      link: "https://github.com/igordjuric404/Plagiarism_Detector",
-      thumbnail:
-        "/img/plagiarism.png",
-    },
-   
-    {
-      title: "Editorially",
-      link: "https://editorially.org",
-      thumbnail:
-        "/img/.png",
-    },
-    {
-      title: "Editrix AI",
-      link: "https://editrix.ai",
-      thumbnail:
-        "/img/.png",
-    },
-    {
       title: "CoinSnap",
       link: "https://coinsnap.io/en/",
       thumbnail:
         "/img/coinsnap.png",
     },
-   
+    {
+      title: "Editorially",
+      link: "https://editorially.org",
+      thumbnail:
+        "",
+    },
+    {
+      title: "Editrix AI",
+      link: "https://editrix.ai",
+      thumbnail:
+        "",
+    },
+    {
+      title: "Plagiarsm detector",
+      link: "https://github.com/igordjuric404/Plagiarism_Detector",
+      thumbnail:
+        "/img/plagiarism.png",
+    },
     {
       title: "E-Case",
       link: "https://e-case.eakademija.com/",
@@ -99,31 +100,6 @@ const AgePage = () => {
       link: "https://github.com/igordjuric404/Against_Violence",
       thumbnail:
         "/img/against_violence.png",
-    },
-    {
-      title: "Tailwind Master Kit",
-      link: "https://tailwindmasterkit.com",
-      thumbnail:
-        "/img/.png",
-    },
-    {
-      title: "SmartBridge",
-      link: "https://smartbridgetech.com",
-      thumbnail:
-        "/img/.png",
-    },
-    {
-      title: "Renderwork Studio",
-      link: "https://renderwork.studio",
-      thumbnail:
-        "/img/.png",
-    },
-   
-    {
-      title: "Creme Digital",
-      link: "https://cremedigital.com",
-      thumbnail:
-        "/img/.png",
     },
   ];
   
@@ -142,22 +118,23 @@ const AgePage = () => {
       <div
         className="scroll main flex-grow flex flex-col items-start justify-center relative"
         style={{ width: "100vw" }}
+        ref={mainContentRef} 
       >
         <BackgroundGradientAnimation>
           <div className="absolute z-50 inset-0 flex flex-col items-left justify-center text-white font-bold px-4 pointer-events-none">
-            <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20 h-[200px] text-3xl text-left md:text-4xl lg:text-9xl ml-[50px] ">
-              Igor Đurić
+            <p className="text-black h-[200px] text-3xl text-left md:text-4xl lg:text-9xl ml-[50px] glow-text integral-bold">
+              Igor Djuric
             </p>
-            <a>
-              <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20 h-[100px] text-3xl text-left md:text-4xl lg:text-2xl ml-[57px] mt-[10px]">
-                Frontend developer
-              </p>
-            </a>
+            <p className="text-black h-[100px] text-3xl text-left md:text-4xl lg:text-2xl ml-[57px] mt-[10px] glow-text integral-bold">
+              Frontend developer
+            </p>
           </div>
         </BackgroundGradientAnimation>
         <div className="relative top-[-300px] bg-gradient-to-b from-transparent z-100 to-[#060606] h-[300px] w-[100vw] pointer-events-none" />
-        {/* <div className="relative top-[-550px] bg-gradient-to-b from-transparent z-100 to-[#060606] h-[300px] w-[100vw] pointer-events-none" /> */}
         <div className="w-[100vw] h-[auto] pt-[10px] mt-[-300px] bg-[#060606]">
+          <h1 className="text-2xl md:text-5xl font-bold dark:text-white pb-[50px] monument-bold">
+            My career path
+          </h1>
           <CollapsibleTimeline>
           </CollapsibleTimeline>
         </div>
@@ -171,16 +148,24 @@ const AgePage = () => {
         </div>
 
         <div className="w-[100vw] h-[auto] pt-[10px] bg-[#060606] images" >
+            <div className="max-w-7xl relative mx-auto pt-10 px-4 w-full left-0 top-0">
+              <h1 className="text-2xl md:text-5xl font-bold dark:text-white monument-bold">
+                My hobbies
+              </h1>
+              <p className="max-w-3xl text-base md:text-xl mt-8 pb-[20px] dark:text-neutral-200 monument">
+                Outside of coding, I enjoy sports, cooking, video games, and capturing photos with analog 1969 analog camera when I travel.
+              </p>
+            </div>
           <ImageSlider />
         </div>
 
-        <TracingBeam className="absolute sidebar z-100 left-0 top-0">
-          <div className="scroll beam w-[5vw] h-[200vh]"></div>
+        <TracingBeam className="absolute sidebar z-1000 left-0 top-0" observeRef={mainContentRef}>
+          <div className="scroll beam w-[5vw] h-[502vh] z-1000 "></div>
         </TracingBeam>
         
         <div className="fixed bottom-0 w-[100vw] h-[90px] dock flex items-center justify-center">
           <FloatingDock
-            mobileClassName="translate-y-20" // only for demo, remove for production
+            mobileClassName="translate-y-20"
             items={links}
           />
         </div>

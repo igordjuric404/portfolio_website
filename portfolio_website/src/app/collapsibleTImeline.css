@@ -188,7 +188,8 @@ h1 {
 .timeline__item-body--expanded .timeline__item-body-content {
   opacity: 1;
   visibility: visible;
-  transition-delay: 0.3s, 0s; /* Ensures opacity transition starts after height transition */
+  transition-delay: 0.3s, 0s; 
+  font-size: 16px!important;
 }
 
 .timeline__arrow[aria-expanded="true"] .timeline__arrow-icon {

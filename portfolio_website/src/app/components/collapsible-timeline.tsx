@@ -134,7 +134,6 @@ const CollapsibleTimeline: React.FC = () => {
           />
         </symbol>
       </svg>
-      <h1>My Career Path</h1>
       <div id="timeline" className="timeline">
         <div className="btn-group">
           <button className="btn" type="button" onClick={expandAll}>
@@ -145,7 +144,7 @@ const CollapsibleTimeline: React.FC = () => {
           </button>
         </div>
         {timelineItems.map((item) => (
-          <div className="timeline__item" key={item.id}>
+          <div className="timeline__item monument" key={item.id}>
             <div className="timeline__item-header">
               <button
                 className="timeline__arrow"

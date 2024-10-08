@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
@@ -12,9 +12,11 @@ import { cn } from "@/utils/cn";
 export const TracingBeam = ({
   children,
   className,
+  observeRef,
 }: {
   children: React.ReactNode;
   className?: string;
+  observeRef?: React.RefObject<HTMLElement>;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -23,26 +25,68 @@ export const TracingBeam = ({
   });
 
   const scrollYProgressVelocity = useVelocity(scrollYProgress);
-  const [velo, setVelocity] = React.useState(0);
-
+  const [velo, setVelocity] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
-
   const [svgHeight, setSvgHeight] = useState(0);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      setSvgHeight(contentRef.current.offsetHeight);
+  // Function to update the SVG height when content size changes
+  const updateSvgHeight = () => {
+    const observedElement = observeRef?.current || contentRef.current;
+    if (observedElement) {
+      setSvgHeight(observedElement.offsetHeight);
+      console.log("Updated svgHeight:", observedElement.offsetHeight);
     }
-  }, []);
+  };
 
+  // Monitor content size changes dynamically using ResizeObserver
+  useEffect(() => {
+    const observedElement = observeRef?.current || contentRef.current;
+
+    if (!observedElement) {
+      console.warn("Observed element is not defined");
+      return;
+    }
+
+    // Set initial viewport height
+    const updateViewportHeight = () => {
+      setViewportHeight(window.innerHeight);
+      console.log("Updated viewportHeight:", window.innerHeight);
+    };
+
+    updateViewportHeight(); // Set initial viewport height
+    updateSvgHeight(); // Set initial SVG height
+
+    // Use ResizeObserver to observe changes in the observed element's height
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        updateSvgHeight(); // Update svgHeight when content height changes
+        console.log("ResizeObserver triggered:", entry.contentRect.height);
+      }
+    });
+
+    observer.observe(observedElement); // Observe the element for size changes
+
+    // Update on window resize as well
+    window.addEventListener("resize", updateViewportHeight);
+
+    return () => {
+      observer.unobserve(observedElement); // Stop observing on cleanup
+      window.removeEventListener("resize", updateViewportHeight);
+    };
+  }, [observeRef]);
+
+  // Track scroll velocity
   useEffect(() => {
     return scrollYProgressVelocity.onChange((latestVelocity) => {
       setVelocity(latestVelocity);
+      console.log("Scroll velocity changed:", latestVelocity);
     });
   }, []);
 
+  // Use `vh` based on the viewport height in the calculations
   const y1 = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, svgHeight+1990]),
+    useTransform(scrollYProgress, [0, 1], [0, svgHeight + 1.22 * viewportHeight]), // Using 115vh equivalent
     {
       stiffness: 400,
       damping: 120,
@@ -56,6 +100,7 @@ export const TracingBeam = ({
       damping: 120,
     }
   );
+
 
   return (
     <motion.div
@@ -71,9 +116,7 @@ export const TracingBeam = ({
       >
         {/* First Line */}
         <motion.path
-          d={`M 1 0 L 1 ${
-            svgHeight * 0.8
-          } l 18 24 L 19 ${svgHeight} L 19 ${svgHeight}`}
+          d={`M 1 0 L 1 ${svgHeight * 0.8} l 18 24 L 19 ${svgHeight} L 19 ${svgHeight}`}
           fill="none"
           stroke="#9091A0"
           strokeOpacity="0.16"
@@ -83,9 +126,7 @@ export const TracingBeam = ({
         ></motion.path>
 
         <motion.path
-          d={`M 1 0 L 1 ${
-            svgHeight * 0.8
-          } l 18 24 L 19 ${svgHeight} L 19 ${svgHeight}`}
+          d={`M 1 0 L 1 ${svgHeight * 0.8} l 18 24 L 19 ${svgHeight} L 19 ${svgHeight}`}
           fill="none"
           stroke="url(#gradient)"
           strokeWidth="1.55"
@@ -96,9 +137,7 @@ export const TracingBeam = ({
         ></motion.path>
 
         <motion.path
-          d={`M 6 -2 L 6 ${
-            svgHeight * 0.8 - 2
-          } l 18 24 L 24 ${svgHeight} L 24 ${svgHeight}`}
+          d={`M 6 -2 L 6 ${svgHeight * 0.8 - 2} l 18 24 L 24 ${svgHeight} L 24 ${svgHeight}`}
           fill="none"
           stroke="#9091A0"
           strokeOpacity="0.16"
@@ -108,9 +147,7 @@ export const TracingBeam = ({
         ></motion.path>
 
         <motion.path
-          d={`M 6 -2 L 6 ${
-            svgHeight * 0.8 - 2
-          } l 18 24 L 24 ${svgHeight} L 24 ${svgHeight}`}
+          d={`M 6 -2 L 6 ${svgHeight * 0.8 - 2} l 18 24 L 24 ${svgHeight} L 24 ${svgHeight}`}
           fill="none"
           stroke="url(#gradient)"
           strokeWidth="1.55"

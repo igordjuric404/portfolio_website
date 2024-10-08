@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: blue;
+  background: rgb(6, 6, 6);
 }
 
 * {
@@ -59,6 +59,8 @@ html {
   overflow: scroll;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background-color: #060606;
+
 }
 ::-webkit-scrollbar {
   width: 0; 
@@ -69,7 +71,7 @@ html {
 }
 
 .page {
-  background-color: #777;
+  background-color: #060606;
 }
 /* * { outline: 2px solid rgba(255,0,0,.2); :hover { outline: 2px solid rgba(255,0,0,0.6); } } * * { outline: 2px solid rgba(0,255,0,.2); :hover { outline: 2px solid rgba(0,255,0,0.6); } } * * * { outline: 2px solid rgba(0,0,255,.2); :hover { outline: 2px solid rgba(0,0,255,0.6); } } * * * * { outline: 2px solid rgba(255,0,255,.2); :hover { outline: 2px solid rgba(255,0,0,0.6); } } * * * * * { outline: 2px solid rgba(0,255,255,.2); :hover { outline: 2px solid rgba(0,255,0,0.6); } } * * * * * * { outline: 2px solid rgba(255,255,0,.2); :hover { outline: 2px solid rgba(0,0,255,0.6); } } * * * * * * * { outline: 2px solid rgba(255,0,0,.2); :hover { outline: 2px solid rgba(255,0,0,0.6); } } * * * * * * * * { outline: 2px solid rgba(0,255,0,.2); :hover { outline: 2px solid rgba(0,255,0,0.6); } } * * * * * * * * * { outline: 2px solid rgba(0,0,255,.2); :hover { outline: 2px solid rgba(0,0,255,0.6); } }  */
 
@@ -99,11 +101,7 @@ button {
 	font: 1em/1.5 "IBM Plex Sans", sans-serif;
 }
 body {
-	background-color: var(--bg);
-	height: 100vh;
-	transition:
-		background-color var(--trans-dur),
-		color var(--trans-dur);
+	height: auto;
 }
 h1 {
 	font-size: 2em;
@@ -248,4 +246,62 @@ h1 {
 		--fg: hsl(var(--hue),10%,90%);
 		--primary: hsl(var(--hue),90%,70%);
 	}
+}
+
+@font-face {
+  font-family: 'infinity';
+  src: url('/fonts/infinity/MADEINFINITY-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'monument';
+  src: url('/fonts/monument/PPMonumentExtended-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'monument-bold';
+  src: url('/fonts/monument/PPMonumentExtended-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'integral';
+  src: url('/fonts/integral/Fontspring-DEMO-integralcf-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'integral-bold';
+  src: url('/fonts/integral/Fontspring-DEMO-integralcf-bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.integral{
+  font-family: 'integral', sans-serif!important;
+}
+
+.integral-bold{
+  font-family: 'integral-bold', sans-serif!important;
+}
+
+.monument-bold{
+  font-family: 'monument-bold', sans-serif !important;
+}
+
+.monument{
+  font-family: 'monument', sans-serif!important;
+}
+
+.glow-text {
+  text-shadow:
+               /* 0 0 20px rgba(193, 109, 0, 0.3), */
+               0 0 30px rgba(173, 89, 0, 0.4),
+               0 0 40px rgba(173, 89, 0, 0.4);
 }
