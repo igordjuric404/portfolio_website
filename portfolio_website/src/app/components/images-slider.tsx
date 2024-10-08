@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 const imagesData = [
 
@@ -101,7 +102,7 @@ const imagesData = [
 ];
 
 
-interface Image {
+interface ImageItem {
   src: string;
   status: "active" | "inactive";
   x: number;
@@ -111,7 +112,7 @@ interface Image {
 
 
 const ImageSlider: React.FC = () => {
-  const [images, setImages] = useState<Image[]>(
+  const [images, setImages] = useState<ImageItem[]>(
     imagesData.map((src) => ({
       src,
       status: "inactive",
@@ -135,7 +136,6 @@ const ImageSlider: React.FC = () => {
     );
     setLast({ x, y });
   };
-  
 
   const distanceFromLast = (x: number, y: number): number => {
     return Math.hypot(x - last.x, y - last.y);
@@ -153,7 +153,6 @@ const ImageSlider: React.FC = () => {
           idx === tailIndex ? { ...image, status: "inactive", order: -1 } : image
         )
       );
-      
 
       setGlobalIndex((prevIndex) => prevIndex + 1);
     }
@@ -167,7 +166,7 @@ const ImageSlider: React.FC = () => {
       handleOnMove(x, y);
     }
   };
-  
+
   const handleTouchMove = (e: React.TouchEvent) => {
     if (isHovering) {
       const container = e.currentTarget.getBoundingClientRect();
@@ -185,7 +184,6 @@ const ImageSlider: React.FC = () => {
         height: "100vh",
         width: "100vw",
         overflow: "hidden",
-        // marginTop: "-80px",
       }}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
@@ -193,11 +191,12 @@ const ImageSlider: React.FC = () => {
       onTouchMove={handleTouchMove}
     >
       {images.map((image, index) => (
-        <img
+        <Image
           key={index}
-          className="image"
           src={image.src}
           alt={`slider-${index}`}
+          width={500} // Set appropriate width
+          height={500} // Set appropriate height
           style={{
             position: "absolute",
             display: image.status === "active" ? "block" : "none",

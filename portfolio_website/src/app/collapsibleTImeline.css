@@ -15,24 +15,12 @@
   --primary: hsl(var(--hue), 90%, 50%);
   --trans-dur: 0.3s;
   --trans-timing: cubic-bezier(0.65, 0, 0.35, 1);
-  font-size: calc(16px + (24 - 16) * (100vw - 320px) / (2560 - 320));
+  /* font-size: calc(16px + (24 - 16) * (100vw - 320px) / (2560 - 320)); */
 }
 
 a {
   color: var(--primary);
   transition: color var(--trans-dur);
-}
-
-body,
-button {
-  color: var(--fg);
-  font: 1em/1.5 "IBM Plex Sans", sans-serif;
-}
-
-body {
-  background-color: var(--bg);
-  height: 100vh;
-  transition: background-color var(--trans-dur), color var(--trans-dur);
 }
 
 h1 {
@@ -154,6 +142,8 @@ h1 {
 
 /* Collapsible Body Styles */
 .timeline__item-body {
+  font-size: 16px!important;
+
   border-radius: 0.375em;
   overflow: hidden;
   margin-top: 0.5em;
@@ -189,7 +179,6 @@ h1 {
   opacity: 1;
   visibility: visible;
   transition-delay: 0.3s, 0s; 
-  font-size: 16px!important;
 }
 
 .timeline__arrow[aria-expanded="true"] .timeline__arrow-icon {

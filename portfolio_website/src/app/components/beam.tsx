@@ -35,58 +35,60 @@ export const TracingBeam = ({
     const observedElement = observeRef?.current || contentRef.current;
     if (observedElement) {
       setSvgHeight(observedElement.offsetHeight);
-      console.log("Updated svgHeight:", observedElement.offsetHeight);
     }
   };
 
   // Monitor content size changes dynamically using ResizeObserver
   useEffect(() => {
     const observedElement = observeRef?.current || contentRef.current;
-
+  
     if (!observedElement) {
       console.warn("Observed element is not defined");
       return;
     }
-
+  
     // Set initial viewport height
     const updateViewportHeight = () => {
       setViewportHeight(window.innerHeight);
-      console.log("Updated viewportHeight:", window.innerHeight);
     };
-
+  
+    const updateSvgHeight = () => {
+      setSvgHeight(observedElement.offsetHeight);
+    };
+  
     updateViewportHeight(); // Set initial viewport height
     updateSvgHeight(); // Set initial SVG height
-
+  
     // Use ResizeObserver to observe changes in the observed element's height
     const observer = new ResizeObserver((entries) => {
       for (let entry of entries) {
         updateSvgHeight(); // Update svgHeight when content height changes
-        console.log("ResizeObserver triggered:", entry.contentRect.height);
       }
     });
-
+  
     observer.observe(observedElement); // Observe the element for size changes
-
+  
     // Update on window resize as well
     window.addEventListener("resize", updateViewportHeight);
-
+  
     return () => {
       observer.unobserve(observedElement); // Stop observing on cleanup
       window.removeEventListener("resize", updateViewportHeight);
     };
   }, [observeRef]);
-
+  
+  
   // Track scroll velocity
   useEffect(() => {
     return scrollYProgressVelocity.onChange((latestVelocity) => {
       setVelocity(latestVelocity);
-      console.log("Scroll velocity changed:", latestVelocity);
     });
-  }, []);
+  }, [scrollYProgressVelocity]);
+  
 
   // Use `vh` based on the viewport height in the calculations
   const y1 = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, svgHeight + 1.22 * viewportHeight]), // Using 115vh equivalent
+    useTransform(scrollYProgress, [0, 1], [0, svgHeight + 1.27 * viewportHeight]), // Using 115vh equivalent
     {
       stiffness: 400,
       damping: 120,

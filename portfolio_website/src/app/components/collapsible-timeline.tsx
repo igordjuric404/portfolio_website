@@ -116,7 +116,8 @@ const CollapsibleTimeline: React.FC = () => {
         }
       }
     });
-  }, [expandedItems]);
+  }, [expandedItems, timelineItems]);
+  
   
 
   return (

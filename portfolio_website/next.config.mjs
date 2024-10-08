@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
+const isGithubPages = process.env.NODE_ENV === 'production';
+const repo = 'portfolio_website';
+
 const nextConfig = {
-  images: {
-    domains: ['aceternity.com'],
-  },
+  output: 'export',
+  basePath: isGithubPages ? `/${repo}` : '',
+  trailingSlash: true,
 };
 
 export default nextConfig;

@@ -17,28 +17,31 @@ const Slider = () => {
   const sliderRef = useRef(null);
 
   useEffect(() => {
+    const currentSliderRef = sliderRef.current; // Store the ref value in a variable
+  
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           setInView(true);
         }
       },
-      {         
+      {
         rootMargin: "200px 0px",
-        threshold: 0.5 
+        threshold: 0.5,
       }
     );
-
-    if (sliderRef.current) {
-      observer.observe(sliderRef.current);
+  
+    if (currentSliderRef) {
+      observer.observe(currentSliderRef);
     }
-
+  
     return () => {
-      if (sliderRef.current) {
-        observer.unobserve(sliderRef.current);
+      if (currentSliderRef) {
+        observer.unobserve(currentSliderRef); // Use the stored ref value in the cleanup
       }
     };
   }, []);
+  
 
   // Only render the slider if it's in view
   return (
