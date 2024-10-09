@@ -57,49 +57,49 @@ const AgePage = () => {
       title: "CREF",
       link: "https://cref.eakademija.com/",
       thumbnail:
-        "/img/cref.png",
+        "./assets/img/cref.png",
     },
     {
       title: "Има на ћирилици",
       link: "https://xn--80aawcaaawel9a5e7n.xn--90a3ac/public/",
       thumbnail:
-        "/img/rnids.png",
+        "./assets/img/rnids.png",
     },
     {
       title: "CoinSnap",
       link: "https://coinsnap.io/en/",
       thumbnail:
-        "/img/coinsnap.png",
+        "./assets/img/coinsnap.png",
     },
     {
       title: "empty1",
       link: "#",
       thumbnail:
-        "/img/empty.png",
+        "./assets/img/empty.png",
     },
     {
       title: "empty2",
       link: "#",
       thumbnail:
-        "/img/empty.png",
+        "./assets/img/empty.png",
     },
     {
       title: "Plagiarsm detector",
       link: "https://github.com/igordjuric404/Plagiarism_Detector",
       thumbnail:
-        "/img/plagiarism.png",
+        "./assets/img/plagiarism.png",
     },
     {
       title: "E-Case",
       link: "https://e-case.eakademija.com/",
       thumbnail:
-        "/img/ecase.png",
+        "./assets/img/ecase.png",
     },
     {
       title: "Against violence hackaton",
       link: "https://github.com/igordjuric404/Against_Violence",
       thumbnail:
-        "/img/against_violence.png",
+        "./assets/img/against_violence.png",
     },
   ];
   
@@ -238,19 +238,19 @@ export default AgePage;
 //       title: "CREF",
 //       link: "https://cref.eakademija.com/",
 //       thumbnail:
-//         "/img/cref.png",
+//         "./assets/img/cref.png",
 //     },
 //     {
 //       title: "Има на ћирилици",
 //       link: "https://xn--80aawcaaawel9a5e7n.xn--90a3ac/public/",
 //       thumbnail:
-//         "/img/rnids.png",
+//         "./assets/img/rnids.png",
 //     },
 //     {
 //       title: "CoinSnap",
 //       link: "https://coinsnap.io/en/",
 //       thumbnail:
-//         "/img/coinsnap.png",
+//         "./assets/img/coinsnap.png",
 //     },
 //     {
 //       title: "Editorially",
@@ -268,19 +268,19 @@ export default AgePage;
 //       title: "Plagiarsm detector",
 //       link: "https://github.com/igordjuric404/Plagiarism_Detector",
 //       thumbnail:
-//         "/img/plagiarism.png",
+//         "./assets/img/plagiarism.png",
 //     },
 //     {
 //       title: "E-Case",
 //       link: "https://e-case.eakademija.com/",
 //       thumbnail:
-//         "/img/ecase.png",
+//         "./assets/img/ecase.png",
 //     },
 //     {
 //       title: "Against violence hackaton",
 //       link: "https://github.com/igordjuric404/Against_Violence",
 //       thumbnail:
-//         "/img/against_violence.png",
+//         "./assets/img/against_violence.png",
 //     },
 //   ];
   
