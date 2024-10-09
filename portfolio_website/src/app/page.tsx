@@ -57,49 +57,49 @@ const AgePage = () => {
       title: "CREF",
       link: "https://cref.eakademija.com/",
       thumbnail:
-        "./portfolio_website/assets/img/cref.png",
+        "./src/app/assets/img/cref.png",
     },
     {
       title: "Има на ћирилици",
       link: "https://xn--80aawcaaawel9a5e7n.xn--90a3ac/public/",
       thumbnail:
-        "./portfolio_website/assets/img/rnids.png",
+        "./src/app/assets/img/rnids.png",
     },
     {
       title: "CoinSnap",
       link: "https://coinsnap.io/en/",
       thumbnail:
-        "./portfolio_website/assets/img/coinsnap.png",
+        "./src/app/assets/img/coinsnap.png",
     },
     {
       title: "empty1",
       link: "#",
       thumbnail:
-        "./portfolio_website/assets/img/empty.png",
+        "./src/app/assets/img/empty.png",
     },
     {
       title: "empty2",
       link: "#",
       thumbnail:
-        "./portfolio_website/assets/img/empty.png",
+        "./src/app/assets/img/empty.png",
     },
     {
       title: "Plagiarsm detector",
       link: "https://github.com/igordjuric404/Plagiarism_Detector",
       thumbnail:
-        "./portfolio_website/assets/img/plagiarism.png",
+        "./src/app/assets/img/plagiarism.png",
     },
     {
       title: "E-Case",
       link: "https://e-case.eakademija.com/",
       thumbnail:
-        "./portfolio_website/assets/img/ecase.png",
+        "./src/app/assets/img/ecase.png",
     },
     {
       title: "Against violence hackaton",
       link: "https://github.com/igordjuric404/Against_Violence",
       thumbnail:
-        "./portfolio_website/assets/img/against_violence.png",
+        "./src/app/assets/img/against_violence.png",
     },
   ];
   
@@ -238,19 +238,19 @@ export default AgePage;
 //       title: "CREF",
 //       link: "https://cref.eakademija.com/",
 //       thumbnail:
-//         "./portfolio_website/assets/img/cref.png",
+//         "./src/app/assets/img/cref.png",
 //     },
 //     {
 //       title: "Има на ћирилици",
 //       link: "https://xn--80aawcaaawel9a5e7n.xn--90a3ac/public/",
 //       thumbnail:
-//         "./portfolio_website/assets/img/rnids.png",
+//         "./src/app/assets/img/rnids.png",
 //     },
 //     {
 //       title: "CoinSnap",
 //       link: "https://coinsnap.io/en/",
 //       thumbnail:
-//         "./portfolio_website/assets/img/coinsnap.png",
+//         "./src/app/assets/img/coinsnap.png",
 //     },
 //     {
 //       title: "Editorially",
@@ -268,19 +268,19 @@ export default AgePage;
 //       title: "Plagiarsm detector",
 //       link: "https://github.com/igordjuric404/Plagiarism_Detector",
 //       thumbnail:
-//         "./portfolio_website/assets/img/plagiarism.png",
+//         "./src/app/assets/img/plagiarism.png",
 //     },
 //     {
 //       title: "E-Case",
 //       link: "https://e-case.eakademija.com/",
 //       thumbnail:
-//         "./portfolio_website/assets/img/ecase.png",
+//         "./src/app/assets/img/ecase.png",
 //     },
 //     {
 //       title: "Against violence hackaton",
 //       link: "https://github.com/igordjuric404/Against_Violence",
 //       thumbnail:
-//         "./portfolio_website/assets/img/against_violence.png",
+//         "./src/app/assets/img/against_violence.png",
 //     },
 //   ];
   
