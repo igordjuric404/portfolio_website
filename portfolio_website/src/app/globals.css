@@ -253,35 +253,35 @@ h1 {
 
 @font-face {
   font-family: 'infinity';
-  src: url('/fonts/infinity/MADEINFINITY-Black.otf') format('opentype');
+  src: url('./assets/fonts/infinity/MADEINFINITY-Black.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'monument';
-  src: url('/fonts/monument/PPMonumentExtended-Regular.otf') format('opentype');
+  src: url('./assets/fonts/monument/PPMonumentExtended-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'monument-bold';
-  src: url('/fonts/monument/PPMonumentExtended-Black.otf') format('opentype');
+  src: url('./assets/fonts/monument/PPMonumentExtended-Black.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'integral';
-  src: url('/fonts/integral/Fontspring-DEMO-integralcf-regular.otf') format('opentype');
+  src: url('./assets/fonts/integral/Fontspring-DEMO-integralcf-regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'integral-bold';
-  src: url('/fonts/integral/Fontspring-DEMO-integralcf-bold.otf') format('opentype');
+  src: url('./assets/fonts/integral/Fontspring-DEMO-integralcf-bold.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
