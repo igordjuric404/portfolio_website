@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
-const isGithubPages = process.env.NODE_ENV === 'production';
-const repo = 'portfolio_website';
+const isProduction = process.env.NODE_ENV === 'production';
+const repo = 'portfolio_website'; // Replace with your repository name
 
 const nextConfig = {
-  output: 'export',
-  basePath: isGithubPages ? `/${repo}` : '',
-  trailingSlash: true,
+  output: 'export', // For static export
+  basePath: isProduction ? `/${repo}` : '',
+  trailingSlash: true, // Optional: Adds a trailing slash to URLs
   images: {
-    unoptimized: true,  // Disable Image Optimization for static export
+    unoptimized: true, // Disable Image Optimization for static export
   },
 };
 
